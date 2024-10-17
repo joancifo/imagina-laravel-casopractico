@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('nombre');
-            $table->string('codigo');
+            $table->string('codigo')->unique();
             $table->string('descripcion')->nullable();
             $table->enum('estado', [Curso::ESTADO_ACTIVO, Curso::ESTADO_DESHABILITADO, Curso::ESTADO_EN_CURSO])
                 ->default(Curso::ESTADO_DESHABILITADO);

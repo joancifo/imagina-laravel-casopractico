@@ -14,6 +14,14 @@ class Curso extends Model
     /** @use HasFactory<\Database\Factories\CursoFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'codigo',
+        'nombre',
+        'descripcion',
+        'fecha_inicio',
+        'fecha_fin'
+    ];
+
     protected $casts = [
         'fecha_inicio' => 'date'
     ];

@@ -26,7 +26,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.cursos.create');
     }
 
     /**
@@ -34,7 +34,11 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $request->all();
+
+        Curso::create($request->all());
+
+        return redirect()->to(route('dashboard.cursos.index'));
     }
 
     /**

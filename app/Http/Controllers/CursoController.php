@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curso;
+use App\Models\Docente;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -53,7 +54,10 @@ class CursoController extends Controller
      */
     public function show(Curso $curso)
     {
-        //
+        return view('dashboard.cursos.show', [
+            'curso' => $curso,
+            'docentes' => Docente::orderBy('nombre')->take(10)->get()
+        ]);
     }
 
     /**
@@ -96,5 +100,18 @@ class CursoController extends Controller
         $curso->delete();
 
         return redirect()->to(route('dashboard.cursos.index'));
+    }
+
+    public function storeDocentes(Curso $curso, Request $request)
+    {
+        $data = $request->validate([
+            'docentes' => ''
+        ]);
+
+//        $curso->docentes()->attach($data['docentes']);
+//        $curso->docentes()->detach($data['docentes']);
+        $curso->docentes()->syncWithoutDetaching($data['docentes']);
+
+        return back();
     }
 }

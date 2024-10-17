@@ -11,17 +11,33 @@ class CursoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-       return response([
-           'data' => Curso::query()->get([
-               'codigo',
-               'nombre',
-               'descripcion',
-               'fecha_inicio',
-               'fecha_fin'
-           ])
-       ]);
+//        if (!$request->has('q')) {
+//            return Curso::query()->get();
+//        }
+
+        return Curso::query()
+            ->when($request->has('codigo'), fn($query) => $query->whereLike('codigo', "%$request->codigo%"))
+            ->when($request->has('nombre'), fn($query) => $query->whereLike('nombre', "%$request->nombre%"))
+            ->when($request->has('descripcion'), fn($query) => $query->whereLike('descripcion', "%$request->descripcion%"))
+//            ->when($request->has('codigo'), fn($query) => $query->whereLike('codigo', "%$request->codigo%"))
+//            ->whereLike('codigo', "%$request->q%")
+//            ->orWhereLike('nombre', "%$request->q%")
+//            ->orWhereLike('descripcion', "%$request->q%")
+//            ->getBindings();
+            ->get();
+
+
+        return response([
+            'data' => Curso::query()->get([
+                'codigo',
+                'nombre',
+                'descripcion',
+                'fecha_inicio',
+                'fecha_fin'
+            ])
+        ]);
     }
 
     /**

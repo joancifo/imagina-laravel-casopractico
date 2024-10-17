@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Curso;
+use App\Models\Docente;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Curso::factory()->count(40)->create();
+        Curso::factory()->count(10)->create();
+
+        Docente::factory()->count(40)->create();
     }
 }

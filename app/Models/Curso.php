@@ -42,4 +42,9 @@ class Curso extends Model
 
         return 'Estado desconocido';
     }
+
+    public function docentes()
+    {
+        return $this->belongsToMany(Docente::class);
+    }
 }

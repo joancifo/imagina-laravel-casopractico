@@ -13,6 +13,7 @@ Route::group([
     'as' => 'dashboard.'
 ], function() {
     Route::resource('cursos', \App\Http\Controllers\CursoController::class);
+    Route::post('cursos/{curso}/docentes', [\App\Http\Controllers\CursoController::class, 'storeDocentes'])->name('cursos.docentes');
 });
 
 

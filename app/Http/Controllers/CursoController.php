@@ -34,9 +34,15 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-//        $request->all();
+        $data = $request->validate([
+            'codigo' => 'required|unique:cursos,codigo',
+            'nombre' => 'required',
+            'descripcion' => '',
+            'fecha_inicio' => 'nullable|date',
+            'fecha_fin' => 'nullable|date|after:fecha_inicio'
+        ]);
 
-        Curso::create($request->all());
+        Curso::create($data);
 
         return redirect()->to(route('dashboard.cursos.index'));
     }

@@ -44,9 +44,9 @@
                         <td>
                             {{ optional($curso->fecha_fin)->format('d/m/Y') }}
                         </td>
-                        <td>
-                            <a href="{{ route('dashboard.cursos.edit', $curso) }}">
-                                Editar curso
+                        <td class="d-flex gap-2 ">
+                            <a href="{{ route('dashboard.cursos.edit', $curso) }}" class="btn btn-warning">
+                                Editar
                             </a>
 
                             <form action="{{ route('dashboard.cursos.destroy', $curso) }}" method="post">

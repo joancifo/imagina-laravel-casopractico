@@ -18,10 +18,10 @@
                     {{ $curso->nombre }}
                 </td>
                 <td>
-                    {{ $curso->estado }}
+                    {{ $curso->estado_texto }}
                 </td>
                 <td>
-                    {{ $curso->fecha_inicio }}
+                    {{ $curso->fecha_inicio->format('d/m/Y') }}
                 </td>
             </tr>
         @endforeach

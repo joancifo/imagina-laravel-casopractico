@@ -17,6 +17,8 @@
                     <th>Nombre</th>
                     <th>Estado</th>
                     <th>Fecha inicio</th>
+                    <th>Fecha fin</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,7 +39,13 @@
                             @else
                                 Sin fecha de inicio
                             @endif
-{{--                            {{ optional($curso->fecha_inicio)->format('d/m/Y') }}--}}
+                            {{--                            {{ optional($curso->fecha_inicio)->format('d/m/Y') }}--}}
+                        </td>
+                        <td>
+                            {{ optional($curso->fecha_fin)->format('d/m/Y') }}
+                        </td>
+                        <td>
+                            <a href="{{ route('dashboard.cursos.edit', $curso) }}">Editar curso</a>
                         </td>
                     </tr>
                 @endforeach

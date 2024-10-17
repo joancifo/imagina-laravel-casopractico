@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CursoController extends Controller
 {
@@ -60,7 +61,9 @@ class CursoController extends Controller
      */
     public function edit(Curso $curso)
     {
-        //
+        return view('dashboard.cursos.edit', [
+            'curso' => $curso
+        ]);
     }
 
     /**
@@ -68,7 +71,21 @@ class CursoController extends Controller
      */
     public function update(Request $request, Curso $curso)
     {
-        //
+        $data = $request->validate([
+            'codigo' => [
+                'required',
+                Rule::unique('cursos')->ignoreModel($curso)
+            ],
+//            'codigo' => "required|unique:cursos,codigo,$curso->id",
+            'nombre' => 'required',
+            'descripcion' => '',
+            'fecha_inicio' => 'nullable|date',
+            'fecha_fin' => 'nullable|date|after:fecha_inicio'
+        ]);
+
+        $curso->update($data);
+
+        return redirect()->to(route('dashboard.cursos.index'));
     }
 
     /**

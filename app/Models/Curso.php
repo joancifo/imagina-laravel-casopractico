@@ -23,7 +23,8 @@ class Curso extends Model
     ];
 
     protected $casts = [
-        'fecha_inicio' => 'date'
+        'fecha_inicio' => 'date',
+        'fecha_fin' => 'date'
     ];
 
 //    protected $dateFormat = 'd/m/Y';

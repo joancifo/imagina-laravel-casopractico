@@ -12,7 +12,13 @@ class CursoController extends Controller
      */
     public function index()
     {
-        //
+        $cursos = Curso::all();
+
+//        return view('dashboard.cursos.index', compact('cursos'));
+
+        return view('dashboard.cursos.index', [
+            'cursos' => $cursos
+        ]);
     }
 
     /**

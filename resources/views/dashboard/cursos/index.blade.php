@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table">
+            <table id="lista" class="table">
                 <thead>
                 <tr>
                     <th>Código</th>
@@ -18,49 +18,55 @@
                     <th>Estado</th>
                     <th>Fecha inicio</th>
                     <th>Fecha fin</th>
-                    <th>Acciones</th>
+{{--                    <th>Acciones</th>--}}
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($cursos as $curso)
-                    <tr>
-                        <td>
-                            {{ $curso->codigo }}
-                        </td>
-                        <td>
-                            {{ $curso->nombre }}
-                        </td>
-                        <td>
-                            {{ $curso->estado_texto }}
-                        </td>
-                        <td>
-                            @if($curso->fecha_inicio)
-                                {{ $curso->fecha_inicio->format('d/m/Y') }}
-                            @else
-                                Sin fecha de inicio
-                            @endif
-                            {{--                            {{ optional($curso->fecha_inicio)->format('d/m/Y') }}--}}
-                        </td>
-                        <td>
-                            {{ optional($curso->fecha_fin)->format('d/m/Y') }}
-                        </td>
-                        <td class="d-flex gap-2 ">
-                            <a href="{{ route('dashboard.cursos.edit', $curso) }}" class="btn btn-warning">
-                                Editar
-                            </a>
+{{--                @foreach($cursos as $curso)--}}
+{{--                    <tr>--}}
+{{--                        <td>--}}
+{{--                            {{ $curso->codigo }}--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            {{ $curso->nombre }}--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            {{ $curso->estado_texto }}--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            @if($curso->fecha_inicio)--}}
+{{--                                {{ $curso->fecha_inicio->format('d/m/Y') }}--}}
+{{--                            @else--}}
+{{--                                Sin fecha de inicio--}}
+{{--                            @endif--}}
+{{--                            --}}{{--                            {{ optional($curso->fecha_inicio)->format('d/m/Y') }}--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            {{ optional($curso->fecha_fin)->format('d/m/Y') }}--}}
+{{--                        </td>--}}
+{{--                        <td class="d-flex gap-2 ">--}}
+{{--                            <a href="{{ route('dashboard.cursos.edit', $curso) }}" class="btn btn-warning">--}}
+{{--                                Editar--}}
+{{--                            </a>--}}
 
-                            <form action="{{ route('dashboard.cursos.destroy', $curso) }}" method="post">
-                                @csrf
-                                @method('delete')
+{{--                            <form action="{{ route('dashboard.cursos.destroy', $curso) }}" method="post">--}}
+{{--                                @csrf--}}
+{{--                                @method('delete')--}}
 
-                                <button class="btn btn-danger">Borrar</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
+{{--                                <button class="btn btn-danger">Borrar</button>--}}
+{{--                            </form>--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
+{{--                @endforeach--}}
                 </tbody>
 
             </table>
         </div>
     </div>
+
+    <script>
+        new DataTable('#lista', {
+            ajax: '{{ route('api.curso.index') }}'
+        });
+    </script>
 </x-app-layout>

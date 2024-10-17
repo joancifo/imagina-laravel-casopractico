@@ -45,7 +45,16 @@
                             {{ optional($curso->fecha_fin)->format('d/m/Y') }}
                         </td>
                         <td>
-                            <a href="{{ route('dashboard.cursos.edit', $curso) }}">Editar curso</a>
+                            <a href="{{ route('dashboard.cursos.edit', $curso) }}">
+                                Editar curso
+                            </a>
+
+                            <form action="{{ route('dashboard.cursos.destroy', $curso) }}" method="post">
+                                @csrf
+                                @method('delete')
+
+                                <button class="btn btn-danger">Borrar</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

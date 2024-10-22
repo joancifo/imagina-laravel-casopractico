@@ -29,6 +29,8 @@ class Curso extends Model
 
 //    protected $dateFormat = 'd/m/Y';
 
+
+
     protected function getEstadoTextoAttribute()
     {
         switch ($this->attributes['estado']) {

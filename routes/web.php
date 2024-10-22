@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -12,8 +13,8 @@ Route::group([
     'prefix' => 'dashboard',
     'as' => 'dashboard.'
 ], function() {
-    Route::resource('cursos', \App\Http\Controllers\CursoController::class);
-    Route::post('cursos/{curso}/docentes', [\App\Http\Controllers\CursoController::class, 'storeDocentes'])->name('cursos.docentes');
+    Route::resource('cursos', CursoController::class);
+    Route::post('cursos/{curso}/docentes', [CursoController::class, 'storeDocentes'])->name('cursos.docentes');
 });
 
 

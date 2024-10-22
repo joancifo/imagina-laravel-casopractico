@@ -45,6 +45,6 @@ class Curso extends Model
 
     public function docentes()
     {
-        return $this->belongsToMany(Docente::class);
+        return $this->belongsToMany(Docente::class)->withTimestamps();
     }
 }

@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('curso_docente', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Curso::class)->constrained();
-            $table->foreignIdFor(\App\Models\Docente::class)->constrained();
+            $table->foreignIdFor(\App\Models\Curso::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(\App\Models\Docente::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
+
+            $table->unique(['curso_id', 'docente_id']);
         });
     }
 

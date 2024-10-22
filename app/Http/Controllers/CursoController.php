@@ -111,6 +111,7 @@ class CursoController extends Controller
 //        $curso->docentes()->attach($data['docentes']);
 //        $curso->docentes()->detach($data['docentes']);
         $curso->docentes()->syncWithoutDetaching($data['docentes']);
+//        $curso->docentes()->sync($data['docentes'], false);
 
         return back();
     }

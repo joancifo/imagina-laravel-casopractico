@@ -2,10 +2,10 @@
 {{--    action="{{ route('dashboard.cursos.docentes.store', $curso) }}" --}}
 {{--      method="post" --}}
     wire:submit="save"
-id="modal-seleccionar-docente" class="modal" tabindex="-1">
+id="modal-seleccionar-docente" class="modal " tabindex="-1" >
     @csrf
 
-    <div class="modal-dialog">
+    <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Añadiendo docentes al curso {{ $curso->codigo }}</h5>

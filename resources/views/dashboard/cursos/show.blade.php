@@ -26,7 +26,7 @@
                         </div>
                     @endforeach
 
-                    <button wire:click="" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-seleccionar-docente">
+                    <button onclick="cargarDocentes()" type="button" class="btn btn-primary" >
                         Seleccionar docente
                     </button>
                 </div>

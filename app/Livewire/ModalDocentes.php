@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Curso;
 use App\Models\Docente;
 use Illuminate\Database\Eloquent\Collection;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -12,9 +13,7 @@ class ModalDocentes extends Component
 {
     public Curso $curso;
 
-    public $docentes;
-
-    public bool $esVisible = false;
+    public $docentes = [];
 
     #[Validate('required|min:3')]
     public string $nombre;
@@ -22,9 +21,12 @@ class ModalDocentes extends Component
     #[Validate(['docentesSeleccionados.*' => 'required|exists:docentes,id'])]
     public $docentesSeleccionados = [];
 
+    #[On('fetch')]
     public function obtenerLosDocentes()
     {
         $this->docentes = Docente::all();
+
+        $this->dispatch('loaded');
     }
 
     public function save()
@@ -47,7 +49,6 @@ class ModalDocentes extends Component
 
     public function mount()
     {
-        $this->obtenerLosDocentes();
         $this->nombre = $this->curso->nombre;
     }
 }

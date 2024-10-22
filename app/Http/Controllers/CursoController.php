@@ -56,7 +56,6 @@ class CursoController extends Controller
     {
         return view('dashboard.cursos.show', [
             'curso' => $curso,
-            'docentes' => Docente::orderBy('nombre')->take(10)->get()
         ]);
     }
 

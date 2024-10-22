@@ -26,7 +26,7 @@
                         </div>
                     @endforeach
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-seleccionar-docente">
+                    <button wire:click="" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-seleccionar-docente">
                         Seleccionar docente
                     </button>
                 </div>
@@ -34,5 +34,7 @@
         </div>
     </div>
 
-   @include('components.modals.seleccionar-docente')
+{{--   @include('components.modals.seleccionar-docente')--}}
+
+    <livewire:modal-docentes :$curso />
 </x-app-layout>

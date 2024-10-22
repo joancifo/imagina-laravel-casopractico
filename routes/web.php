@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\CursoDocenteController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -14,7 +15,8 @@ Route::group([
     'as' => 'dashboard.'
 ], function() {
     Route::resource('cursos', CursoController::class);
-    Route::post('cursos/{curso}/docentes', [CursoController::class, 'storeDocentes'])->name('cursos.docentes');
+    Route::post('cursos/{curso}/docentes', [CursoDocenteController::class, 'store'])->name('cursos.docentes.store');
+    Route::delete('cursos/{curso}/docentes/{docente}', [CursoDocenteController::class, 'destroy'])->name('cursos.docentes.destroy');
 });
 
 

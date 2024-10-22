@@ -1,4 +1,4 @@
-<form action="{{ route('dashboard.cursos.docentes', $curso) }}" method="post" id="modal-seleccionar-docente" class="modal" tabindex="-1">
+<form action="{{ route('dashboard.cursos.docentes.store', $curso) }}" method="post" id="modal-seleccionar-docente" class="modal" tabindex="-1">
     @csrf
 
     <div class="modal-dialog">

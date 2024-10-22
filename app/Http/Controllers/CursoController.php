@@ -101,18 +101,4 @@ class CursoController extends Controller
 
         return redirect()->to(route('dashboard.cursos.index'));
     }
-
-    public function storeDocentes(Curso $curso, Request $request)
-    {
-        $data = $request->validate([
-            'docentes' => ''
-        ]);
-
-//        $curso->docentes()->attach($data['docentes']);
-//        $curso->docentes()->detach($data['docentes']);
-        $curso->docentes()->syncWithoutDetaching($data['docentes']);
-//        $curso->docentes()->sync($data['docentes'], false);
-
-        return back();
-    }
 }

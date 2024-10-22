@@ -12,8 +12,17 @@
                 <div>
                     <h5>Los docentes del curso</h5>
                     @foreach($curso->docentes as $docente)
-                        <div>
-                            {{ $docente->nombre }}
+                        <div class="d-flex justify-between">
+                            <div>{{ $docente->nombre }}</div>
+
+                            <form action="{{ route('dashboard.cursos.docentes.destroy', [$curso, $docente]) }}" method="post">
+                                @csrf
+                                @method('delete')
+
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    &times;
+                                </button>
+                            </form>
                         </div>
                     @endforeach
 

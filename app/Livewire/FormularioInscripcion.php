@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Curso;
 use App\Models\Inscripcion;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -24,7 +25,14 @@ class FormularioInscripcion extends Component
     {
         $this->validate();
 
-        $path = $this->documento->store('documentos');
+
+//        Storage::delete("documentos/$inscripcion->documento");
+
+        $path = $this->documento
+            ? $this->documento->store('documentos', 'public')
+            : null;
+
+//        $path = optional($this->documento)->store('documentos') ?? null;
 
         Inscripcion::create([
             'curso_id' => $this->curso->id,

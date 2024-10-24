@@ -6,13 +6,15 @@
         <div>
             <input wire:model="nombre" type="text" class="form-control" placeholder="Nombre">
 
-            @error('nombre') <div class="alert alert-danger">{{ $message }}</div> @enderror
+            @error('nombre')
+            <x-alert tipo="danger" :mensaje="$message"></x-alert>
+            @enderror
         </div>
 
         <div>
             <label>
                 Documentación
-            <input wire:model="documento" type="file" class="form-control">
+                <input wire:model="documento" type="file" class="form-control">
             </label>
         </div>
 

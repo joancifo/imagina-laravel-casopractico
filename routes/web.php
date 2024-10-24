@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CursoDocenteController;
 use App\Http\Controllers\InscripcionController;
@@ -38,10 +39,16 @@ Route::view('dashboard', 'dashboard')
 
 Route::group([
     'prefix' => 'dashboard',
-    'as' => 'dashboard.'
+    'as' => 'dashboard.',
+    'middleware' => [
+        'auth',
+        'verified',
+        'role:Alumno|Gestor'
+    ]
 ], function () {
     Route::resource('cursos', CursoController::class);
     Route::resource('inscripciones', InscripcionController::class);
+    Route::resource('alumnos', AlumnoController::class);
     Route::post('cursos/{curso}/docentes', [CursoDocenteController::class, 'store'])->name('cursos.docentes.store');
     Route::delete('cursos/{curso}/docentes/{docente}', [CursoDocenteController::class, 'destroy'])->name('cursos.docentes.destroy');
 });

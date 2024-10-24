@@ -25,6 +25,21 @@
                 @endif
             </header>
 
+            <div class="div">
+                <div class="row">
+                    <div class="col-12">
+                        {{ auth()->user()->roles }}
+                    </div>
+                </div>
+
+                <div>
+                    @role('Alumno')
+                        Tienes el rol 1
+                    @endrole
+                </div>
+
+            </div>
+
             <main class="row">
 
                 @foreach($cursos as $curso)

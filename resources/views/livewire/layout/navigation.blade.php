@@ -27,6 +27,9 @@ new class extends Component
             <a class="nav-link"  href="{{ route('dashboard.inscripciones.index') }}">Lista de inscripciones</a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link"  href="{{ route('dashboard.alumnos.index') }}">Lista de alumnos</a>
+        </li>
 
     </ul>
 </header>

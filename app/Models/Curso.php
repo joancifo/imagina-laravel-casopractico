@@ -49,4 +49,9 @@ class Curso extends Model
     {
         return $this->belongsToMany(Docente::class)->withTimestamps();
     }
+
+    public function inscripciones()
+    {
+        return $this->hasMany(Inscripcion::class);
+    }
 }

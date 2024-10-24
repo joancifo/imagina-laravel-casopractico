@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CursoCreado;
 use App\Jobs\NotifyAdmins;
 use App\Models\Curso;
 use App\Models\Docente;
 use App\Models\User;
-use App\Notifications\CursoCreado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
@@ -51,7 +51,9 @@ class CursoController extends Controller
         $curso = Curso::create($data);
 
 //        dispatch(new NotifyAdmins(User::first()));
-        User::first()->notifyNow(new CursoCreado($curso));
+        User::first()->notifyNow(new \App\Notifications\CursoCreado($curso));
+
+        \App\Events\CursoCreado::dispatch($curso);
 
         return redirect()->to(route('dashboard.cursos.index'));
     }

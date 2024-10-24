@@ -6,10 +6,20 @@ use App\Http\Controllers\InscripcionController;
 use App\Livewire\FormularioInscripcion;
 use App\Livewire\Perfil;
 use App\Models\Curso;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $cursos = Curso::all();
+    $cursos = Curso::query()
+        ->where('estado', Curso::ESTADO_DESHABILITADO)
+        ->whereDoesntHave('inscripciones', function (Builder $builder) {
+            return $builder->where('user_id', auth()->user()->id);
+        })
+//        ->where(function(Builder $builder) {
+//            $builder->where('estado', 1)
+//                ->orWhere('estado', 2);
+//        })
+        ->get();
 
     return view('welcome', ['cursos' => $cursos]);
 });

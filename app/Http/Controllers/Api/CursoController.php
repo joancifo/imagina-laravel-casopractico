@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Curso;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CursoController extends Controller
 {
@@ -13,32 +14,38 @@ class CursoController extends Controller
      */
     public function index(Request $request)
     {
+        return DataTables::of(Curso::query()->select(['id', 'codigo', 'nombre']))
+            ->addColumn('acciones', 'dashboard.cursos._acciones')
+            ->make();
+    }
+//    public function index(Request $request)
+//    {
 //        if (!$request->has('q')) {
 //            return Curso::query()->get();
 //        }
-
-        return Curso::query()
-            ->when($request->has('codigo'), fn($query) => $query->whereLike('codigo', "%$request->codigo%"))
-            ->when($request->has('nombre'), fn($query) => $query->whereLike('nombre', "%$request->nombre%"))
-            ->when($request->has('descripcion'), fn($query) => $query->whereLike('descripcion', "%$request->descripcion%"))
+//
+//        return Curso::query()
+//            ->when($request->has('codigo'), fn($query) => $query->whereLike('codigo', "%$request->codigo%"))
+//            ->when($request->has('nombre'), fn($query) => $query->whereLike('nombre', "%$request->nombre%"))
+//            ->when($request->has('descripcion'), fn($query) => $query->whereLike('descripcion', "%$request->descripcion%"))
 //            ->when($request->has('codigo'), fn($query) => $query->whereLike('codigo', "%$request->codigo%"))
 //            ->whereLike('codigo', "%$request->q%")
 //            ->orWhereLike('nombre', "%$request->q%")
 //            ->orWhereLike('descripcion', "%$request->q%")
 //            ->getBindings();
-            ->get();
-
-
-        return response([
-            'data' => Curso::query()->get([
-                'codigo',
-                'nombre',
-                'descripcion',
-                'fecha_inicio',
-                'fecha_fin'
-            ])
-        ]);
-    }
+//            ->get();
+//
+//
+//        return response([
+//            'data' => Curso::query()->get([
+//                'codigo',
+//                'nombre',
+//                'descripcion',
+//                'fecha_inicio',
+//                'fecha_fin'
+//            ])
+//        ]);
+//    }
 
     /**
      * Store a newly created resource in storage.

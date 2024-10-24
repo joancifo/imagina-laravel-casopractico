@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Observers\InscripcionObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
+#[ObservedBy([InscripcionObserver::class])]
 class Inscripcion extends Model
 {
     protected $table = 'inscripciones';

@@ -20,8 +20,13 @@ new class extends Component
 
     <ul class="nav nav-pills gap-4">
         <li class="nav-item">
-            <a class="nav-link active"  href="{{ route('dashboard.cursos.index') }}">Lista de cursos</a>
+            <a class="nav-link"  href="{{ route('dashboard.cursos.index') }}">Lista de cursos</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link"  href="{{ route('dashboard.inscripciones.index') }}">Lista de inscripciones</a>
+        </li>
+
 
     </ul>
 </header>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CursoDocenteController;
+use App\Http\Controllers\InscripcionController;
 use App\Livewire\FormularioInscripcion;
 use App\Livewire\Perfil;
 use App\Models\Curso;
@@ -30,6 +31,7 @@ Route::group([
     'as' => 'dashboard.'
 ], function () {
     Route::resource('cursos', CursoController::class);
+    Route::resource('inscripciones', InscripcionController::class);
     Route::post('cursos/{curso}/docentes', [CursoDocenteController::class, 'store'])->name('cursos.docentes.store');
     Route::delete('cursos/{curso}/docentes/{docente}', [CursoDocenteController::class, 'destroy'])->name('cursos.docentes.destroy');
 });

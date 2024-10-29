@@ -31,6 +31,8 @@
 
 
 @task('front_dependencies')
+    echo "Starting npm ({{ $release }})"
+    cd {{ $new_release_dir }}
     npm i
     npm run build
 @endtask

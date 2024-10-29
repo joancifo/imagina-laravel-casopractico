@@ -12,7 +12,7 @@ unit_test:
     - composer install
     - php artisan key:generate
     - php artisan migrate
-    - vendor/bin/phpunit
+    - php artisan test
 
 deploy_production:
   stage: deploy

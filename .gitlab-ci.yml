@@ -2,7 +2,6 @@ default:
   image: registry.gitlab.com/joancifo/caso-practico
 
 stages:
-  - test
   - deploy
 
 unit_test:
@@ -10,6 +9,8 @@ unit_test:
   script:
     - cp .env.example .env
     - composer install
+    - npm install
+    - npm run build
     - php artisan key:generate
     - php artisan migrate
     - php artisan test

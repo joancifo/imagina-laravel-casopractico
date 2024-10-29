@@ -21,6 +21,7 @@
                 </td>
 
                 <td>
+                    @can('alumno:borrar')
                     <form action="{{route('dashboard.alumnos.destroy', $alumno)}}" method="post"                    >
                         @csrf
                         @method('delete')
@@ -28,6 +29,7 @@
                             &times;
                         </button>
                     </form>
+                    @endcan
                 </td>
             </tr>
         @endforeach

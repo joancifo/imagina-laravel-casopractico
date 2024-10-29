@@ -19,7 +19,7 @@ class CursoFactory extends Factory
     {
         return [
             'nombre' => fake()->name,
-            'codigo' => 'C-' . Str::padLeft(fake()->numberBetween(1, 100), 3, '0'),
+            'codigo' => 'C-' . Str::padLeft(fake()->numberBetween(1, 100000), 3, '0'),
             'descripcion' => fake()->sentence,
             'fecha_inicio' => fake()->date,
         ];

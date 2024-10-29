@@ -7,7 +7,9 @@ use App\Jobs\NotifyAdmins;
 use App\Models\Curso;
 use App\Models\Docente;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
@@ -18,7 +20,17 @@ class CursoController extends Controller
      */
     public function index()
     {
+//        Pdf::view('pdf.invoice')->save(storage_path('invoice.pdf'));
         $cursos = Curso::all();
+
+//        App::setLocale(auth()->user()->locale);
+//
+//        return Pdf::loadView("pdf.invoice", ['curso' => $cursos->first()])
+//            ->setPaper('a4', 'landscape')
+//            ->setWarnings(false)
+//            ->stream('myfile.pdf');
+
+
 
 //        return view('dashboard.cursos.index', compact('cursos'));
 

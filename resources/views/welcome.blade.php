@@ -26,11 +26,14 @@
             </header>
 
             <div class="div">
+
+                @auth
                 <div class="row">
                     <div class="col-12">
                         {{ auth()->user()->roles }}
                     </div>
                 </div>
+                @endauth
 
                 <div>
                     @role('Alumno')

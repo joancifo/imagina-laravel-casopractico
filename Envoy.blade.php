@@ -13,6 +13,7 @@
     run_composer
     front_dependencies
     update_symlinks
+    fix_permissions
 @endstory
 
 @task('clone_repository')
@@ -52,6 +53,9 @@
 @task('migrations')
     cd {{ $app_dir }}/current
     php8.3 artisan migrate
+@endtask
 
-
+@task('fix_permissions')
+    cd {{ $new_release_dir }}
+    chmod 777 * -R
 @endtask

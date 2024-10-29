@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Curso extends Model
 {
@@ -11,8 +12,7 @@ class Curso extends Model
     const ESTADO_DESHABILITADO = 'DESHABILITADO';
     const ESTADO_EN_CURSO = 'EN_CURSO';
 
-    /** @use HasFactory<\Database\Factories\CursoFactory> */
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     protected $fillable = [
         'codigo',
@@ -27,6 +27,8 @@ class Curso extends Model
         'fecha_fin' => 'date'
     ];
 
+    public $translatable = ['nombre'];
+
 //    protected $dateFormat = 'd/m/Y';
 
 
@@ -35,7 +37,7 @@ class Curso extends Model
     {
         switch ($this->attributes['estado']) {
             case self::ESTADO_ACTIVO:
-                return __('Activo');
+                return __('dashboard.cursos.estados.activo');
             case self::ESTADO_DESHABILITADO:
                 return __('Deshabilitado');
             case self::ESTADO_EN_CURSO:

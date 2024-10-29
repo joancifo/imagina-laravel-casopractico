@@ -15,7 +15,7 @@ class RolesYPermisosSeeder extends Seeder
     {
         $alumnoBorrar = Permission::create(['name' => 'alumno:borrar']);
 
-        $alunmo = Role::create(['name' => 'Alumno']);
+        $alumno = Role::create(['name' => 'Alumno']);
         $editor = Role::create(['name' => 'Editor']);
         $gestor =Role::create(['name' => 'Gestor']);
 

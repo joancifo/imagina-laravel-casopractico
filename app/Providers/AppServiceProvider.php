@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Inscripcion;
 use App\Observers\InscripcionObserver;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,5 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+//        $sessionDelUsuario = Session::get('locale');
+//
+//        App::setLocale($sessionDelUsuario);
     }
 }

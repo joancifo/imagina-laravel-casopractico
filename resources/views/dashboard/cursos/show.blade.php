@@ -2,11 +2,11 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                {{ $curso->codigo }}
+                {{ __('dashboard.cursos.show', ['curso' =>$curso->codigo]) }}
             </div>
             <div class="card-body">
                 <div>
-                    {{ $curso->nombre }}
+                    {{ $curso->nombre }} / {{ __('dashboard.cursos.estados.' . $curso->estado) }}
                 </div>
 
                 <div>

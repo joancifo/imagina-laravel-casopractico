@@ -1,13 +1,15 @@
 <x-app-layout>
     <div class="card">
         <div class="card-header d-flex">
-            Lista de cursos
+            {{ __('dashboard.cursos.titulo') }}
 
             <div class="ms-auto">
                 <a href="{{ route('dashboard.cursos.create') }}" class="btn btn-primary">
-                    {{ __('Crear curso') }}
+                    {{ __('dashboard.cursos.create') }}
                 </a>
             </div>
+
+            {{ trans_choice('dashboard.cursos.count', \App\Models\Curso::count(), ['num' => App\Models\Curso::count()]) }}
         </div>
         <div class="card-body">
             <table id="lista" class="table"></table>

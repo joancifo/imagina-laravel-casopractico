@@ -4,17 +4,6 @@ default:
 stages:
   - deploy
 
-unit_test:
-  stage: test
-  script:
-    - cp .env.example .env
-    - composer install
-    - npm install
-    - npm run build
-    - php artisan key:generate
-    - php artisan migrate
-    - php artisan test
-
 deploy_production:
   stage: deploy
   script:

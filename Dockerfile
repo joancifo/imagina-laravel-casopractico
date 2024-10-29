@@ -5,7 +5,7 @@ FROM php:8.3
 RUN apt-get update
 
 # Install PHP and composer dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
     git \
     zlib1g-dev \
     libzip-dev

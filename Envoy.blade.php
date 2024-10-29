@@ -11,6 +11,7 @@
 @story('deploy')
     clone_repository
     run_composer
+    front_dependencies
     update_symlinks
 @endstory
 
@@ -28,14 +29,16 @@
     php8.3 /usr/local/bin/composer install --prefer-dist --no-scripts -q -o
 @endtask
 
+
+@task('front_dependencies')
+    npm i
+    npm run build
+@endtask
+
 @task('update_symlinks')
     echo "Linking storage directory"
     rm -rf {{ $new_release_dir }}/storage
     ln -nfs {{ $app_dir }}/storage {{ $new_release_dir }}/storage
-
-    echo "Linking database.sqlite"
-    rm -rf {{ $new_release_dir }}/database/database.sqlite
-    ln -nfs {{ $app_dir }}/database.sqlite {{ $new_release_dir }}/database/database.sqlite
 
     echo 'Linking .env file'
     ln -nfs {{ $app_dir }}/.env {{ $new_release_dir }}/.env

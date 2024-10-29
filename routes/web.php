@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $cursos = Curso::query()
         ->where('estado', Curso::ESTADO_DESHABILITADO)
-        ->whereDoesntHave('inscripciones', function (Builder $builder) {
-            return $builder->where('user_id', auth()->user()->id);
+        ->when(auth()->check(), function ($builder) {
+            $builder->whereDoesntHave('inscripciones', function (Builder $builder) {
+                return $builder->where('user_id', auth()->user()->id);
+            });
         })
+
 //        ->where(function(Builder $builder) {
 //            $builder->where('estado', 1)
 //                ->orWhere('estado', 2);

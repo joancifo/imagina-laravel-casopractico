@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\Inscripcion;
-use App\Observers\InscripcionObserver;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
+use App\Models\Empresa;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Slides\Saml2\Events\SignedIn;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
 //        $sessionDelUsuario = Session::get('locale');
 //
 //        App::setLocale($sessionDelUsuario);
+
+        Event::listen(SignedIn::class, function (SignedIn $event) {
+
+
+        });
     }
 }

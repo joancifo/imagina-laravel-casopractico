@@ -66,7 +66,6 @@
 {{--                    </tr>--}}
 {{--                @endforeach--}}
 {{--                </tbody>--}}
-
         </div>
     </div>
 
@@ -75,10 +74,11 @@
             serverSide: true,
             ajax: '{{ route('api.curso.index') }}?csrf={{ csrf_token() }}',
             columns: [
+                {data: "nombre", name: "nombre", title: 'Nombre', render(row) {
+                    return row['{{ app()->getLocale() }}'];
+                }},
                 {data: "codigo", name: "codigo", title: 'Código'},
-                {data: "nombre", name: "nombre", title: 'Nombre'},
                 {data: "acciones", name: "acciones", title: 'Acciones', sortable: false},
-
             ]
         });
     </script>

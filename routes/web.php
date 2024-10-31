@@ -5,10 +5,13 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CursoDocenteController;
 use App\Http\Controllers\InscripcionController;
 use App\Livewire\FormularioInscripcion;
+use App\Livewire\Panel;
 use App\Livewire\Perfil;
 use App\Models\Curso;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/panel', Panel::class);
 
 Route::get('/', function () {
     $cursos = Curso::query()

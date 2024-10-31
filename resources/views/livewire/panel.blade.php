@@ -11,20 +11,10 @@
             <h2>PANEL</h2>
 
             @if($tab === 'GRAFICAS')
-                <table class="table">
-                    @foreach($cursos as $curso)
-                        <tr>
-                            <td>{{ $curso->codigo }}</td>
-                        </tr>
-                    @endforeach
-                </table>
+               <livewire:tab-graficas></livewire:tab-graficas>
 
             @elseif($tab === 'DETALLE')
-                <div class="card">
-                    <div class="card-body">
-                        {{ $detalle->codigo }}
-                    </div>
-                </div>
+                <livewire:tab-detalle ></livewire:tab-detalle>
             @endif
         </div>
     </div>

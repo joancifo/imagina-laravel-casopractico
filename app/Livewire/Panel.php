@@ -8,35 +8,17 @@ use Livewire\Component;
 class Panel extends Component
 {
     public $verPanel = true;
-    public $tab = "";
 
-    public $cursos;
-    public Curso $detalle;
+    public $tab = "";
 
     public function togglePanel()
     {
         $this->verPanel = !$this->verPanel;
     }
 
-    public function mostrarGraficas()
+    public function cambiarTab($tab)
     {
-        $this->cursos = Curso::all();
-
-        $this->tab = "GRAFICAS";
-    }
-
-    public function mostrarInformes()
-    {
-        $this->cursos = Curso::all();
-
-        $this->tab = "INFORMES";
-    }
-
-    public function mostrarDetalle()
-    {
-        $this->detalle = Curso::first();
-
-        $this->tab = "DETALLE";
+        $this->tab = $tab;
     }
 
     public function render()

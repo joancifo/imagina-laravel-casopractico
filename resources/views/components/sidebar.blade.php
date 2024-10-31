@@ -6,19 +6,19 @@
 
     <ul>
         <li>
-            <button  wire:click="mostrarGraficas" >
+            <button  wire:click="cambiarTab('GRAFICAS')" >
                 Ver gráficas
             </button>
         </li>
 
         <li>
-            <button wire:click="mostrarInformes">
+            <button wire:click="cambiarTab('INFORME')">
                 Ver informes
             </button>
         </li>
 
         <li>
-            <button wire:click="mostrarDetalle">
+            <button wire:click="cambiarTab('DETALLE')">
                 Ver detalle
             </button>
         </li>

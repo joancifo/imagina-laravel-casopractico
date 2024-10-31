@@ -15,7 +15,12 @@ class CursoController extends Controller
     public function index(Request $request)
     {
         return DataTables::of(Curso::query()->select(['id', 'codigo', 'nombre']))
-            ->addColumn('acciones', 'dashboard.cursos._acciones')
+            ->addColumn('acciones', function (Curso $curso) use ($request) {
+                return view('dashboard.cursos._acciones', [
+                    'curso' => $curso,
+                    'token' => $request->csrf
+                ]);
+            })
             ->make();
     }
 //    public function index(Request $request)

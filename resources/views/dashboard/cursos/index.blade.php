@@ -73,7 +73,7 @@
     <script>
         new DataTable('#lista', {
             serverSide: true,
-            ajax: '{{ route('api.curso.index') }}',
+            ajax: '{{ route('api.curso.index') }}?csrf={{ csrf_token() }}',
             columns: [
                 {data: "codigo", name: "codigo", title: 'Código'},
                 {data: "nombre", name: "nombre", title: 'Nombre'},

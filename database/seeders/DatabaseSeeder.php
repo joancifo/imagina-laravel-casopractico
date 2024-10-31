@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Curso;
 use App\Models\Docente;
+use App\Models\Inscripcion;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,8 +28,21 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole('Gestor');
 
-        Curso::factory()->count(10)->create();
+//        Curso::factory()->count(10)->create();
 
         Docente::factory()->count(40)->create();
+
+//        User::factory()->count(40)
+//            ->create()
+//            ->each(function (User $user) {
+//                $user->assignRole('Alumno');
+//            });
+
+        Inscripcion::factory()->count(10)->create();
+
+        Inscripcion::factory()->count(10)->create([
+            'curso_id' => Curso::first()->id
+        ]);
+
     }
 }

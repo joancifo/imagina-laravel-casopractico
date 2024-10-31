@@ -11,10 +11,10 @@
             <h2>PANEL</h2>
 
             @if($tab === 'GRAFICAS')
-               <livewire:tab-graficas></livewire:tab-graficas>
+               <livewire:tab-graficas ></livewire:tab-graficas>
 
             @elseif($tab === 'DETALLE')
-                <livewire:tab-detalle ></livewire:tab-detalle>
+                <livewire:tab-detalle :$cursoDetalle></livewire:tab-detalle>
             @endif
         </div>
     </div>

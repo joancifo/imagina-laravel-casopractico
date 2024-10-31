@@ -1,5 +1,5 @@
 <div class="card">
     <div class="card-body">
-        {{ $detalle->codigo }}
+        {{ $cursoDetalle['codigo']}}
     </div>
 </div>

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Curso;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Panel extends Component
@@ -10,6 +11,16 @@ class Panel extends Component
     public $verPanel = true;
 
     public $tab = "";
+
+    public $cursoDetalle;
+
+    #[On('mostrar')]
+    public function mostrarCurso($params)
+    {
+       $this->cursoDetalle = $params['curso'];
+
+        $this->tab = "DETALLE";
+    }
 
     public function togglePanel()
     {
